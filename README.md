@@ -5,13 +5,16 @@
 
 3. Upload stemcell and release
 
-   wget --post-data="" --header="Authorization: Token <>" https://network.pivotal.io/api/v2/products/p-concourse/releases/673536/product_files/714094/download -O "concourse-bosh-release-6.3.0.tgz"
-   wget --post-data="" --header="Authorization: Token <>" https://network.pivotal.io/api/v2/products/stemcells-ubuntu-xenial/releases/673636/product_files/714242/download -O "light-bosh-stemcell-250.200-aws-xen-hvm-ubuntu-xenial-go_agent.tgz"
+wget --post-data="" --header="Authorization: Token <>" https://network.pivotal.io/api/v2/products/p-concourse/releases/673536/product_files/714094/download -O "concourse-bosh-release-6.3.0.tgz"
+wget --post-data="" --header="Authorization: Token <>" https://network.pivotal.io/api/v2/products/stemcells-ubuntu-xenial/releases/673636/product_files/714242/download -O "light-bosh-stemcell-250.200-aws-xen-hvm-ubuntu-xenial-go_agent.tgz"
 
 4. create local user
    export BOSH_CLIENT=ops_manager BOSH_CLIENT_SECRET=<> BOSH_CA_CERT=/var/tempest/workspaces/default/root_ca_certificate BOSH_ENVIRONMENT=<redacted>
+
    export CREDHUB_CLIENT=$BOSH_CLIENT CREDHUB_SECRET=$BOSH_CLIENT_SECRET
+   
    credhub api -s $BOSH_ENVIRONMENT:8844 --ca-cert $BOSH_CA_CERT
+   
    credhub login
 
    credhub generate -t user -z admin -n /p-bosh/concourse-sc/local_user
