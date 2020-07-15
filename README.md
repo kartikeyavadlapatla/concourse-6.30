@@ -3,7 +3,12 @@
 
 2.Update static ips and variables 
 
-3.Run below commands
+3. Upload stemcell and release
+
+wget --post-data="" --header="Authorization: Token <>" https://network.pivotal.io/api/v2/products/p-concourse/releases/673536/product_files/714094/download -O "concourse-bosh-release-6.3.0.tgz"
+wget --post-data="" --header="Authorization: Token <>" https://network.pivotal.io/api/v2/products/stemcells-ubuntu-xenial/releases/673636/product_files/714242/download -O "light-bosh-stemcell-250.200-aws-xen-hvm-ubuntu-xenial-go_agent.tgz"
+
+4.Run below commands
 
 bosh deploy -d concourse \
 concourse-bosh-deployment-5.5.11/cluster/concourse.yml \
