@@ -1,0 +1,15 @@
+- type: replace
+  path: /releases/name=credhub/version
+  value: latest
+- type: remove
+  path: /releases/name=credhub/sha1
+- type: remove
+  path: /releases/name=credhub/url
+
+- type: replace
+  path: /releases/name=uaa/version
+  value: latest
+- type: remove
+  path: /releases/name=uaa/sha1
+- type: remove
+  path: /releases/name=uaa/url

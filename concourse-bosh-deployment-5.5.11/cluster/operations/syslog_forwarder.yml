@@ -1,0 +1,33 @@
+- type: replace
+  path: /addons?/-
+  value:
+    name: syslog_forwarder
+    include:
+      stemcell:
+      - os: ubuntu-trusty
+      - os: ubuntu-xenial
+    jobs:
+    - name: syslog_forwarder
+      release: syslog
+      properties:
+        syslog:
+          address: ((syslog_address))
+          port: ((syslog_port))
+          transport: tcp
+          tls_enabled: true
+          permitted_peer: ((syslog_permitted_peer))
+
+          # prevent duplicate logs from components which send to syslog
+          # themselves
+          # audispd rule: remove audispd log event flooding if queue overflows
+          # auditd rule: filter all logs to avoid "log file is larger than max size"
+          custom_rule: |
+            if ($programname startswith "vcap.") then stop
+            if ($programname contains "audispd") then stop
+            if ($programname contains "auditd") then stop
+
+- type: replace
+  path: /releases/-
+  value:
+    name: syslog
+    version: latest

@@ -1,0 +1,11 @@
+- type: replace
+  path: /releases/name=backup-and-restore-sdk?
+  value:
+    name: backup-and-restore-sdk
+    version: latest
+
+- type: replace
+  path: /instance_groups/name=db/jobs/name=database-backup-restorer?
+  value:
+    name: database-backup-restorer
+    release: backup-and-restore-sdk

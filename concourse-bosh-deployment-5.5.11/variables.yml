@@ -1,0 +1,21 @@
+---
+#BASIC AUTH
+local_user:
+  username: admin1
+  password: pass1
+#DEPLOYMENT
+deployment_name: concourse-np
+azs: 
+ - us-east-1a
+db_persistent_disk_type: 307200
+db_vm_type: m5.xlarge
+external_url: https://10.0.1.15
+external_host: 10.0.1.15
+network_name: concourse
+postgres_password: postgress_pass1
+web_ip: 10.0.1.15
+web_instances: 1
+web_vm_type: m5.xlarge
+worker_vm_type: m5.xlarge
+worker_instances: 2
+###CREDHUB/UAA

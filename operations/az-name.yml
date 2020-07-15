@@ -1,0 +1,12 @@
+---
+- type: replace
+  path: /instance_groups/name=web/azs
+  value: [us-east-1a]
+
+- type: replace
+  path: /instance_groups/name=db/azs
+  value: [us-east-1a]
+
+- type: replace
+  path: /instance_groups/name=worker/azs
+  value: [us-east-1a]

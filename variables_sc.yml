@@ -1,0 +1,13 @@
+azs:
+  - us-east-1a
+deployment_name: concourse
+network_name: concourse
+external_host: 10.0.1.28        ##for static setup can static web ip or concourse lb ip
+external_url: https://10.0.1.28  ##for static setup can static web ip or concourse lb ip
+web_ip: 10.0.1.28               ## static web ip
+web_vm_type: m5.xlarge
+web_instances: 1
+db_vm_type: m5.large
+db_persistent_disk_type: 102400
+worker_vm_type: m5.xlarge
+worker_instances: 4

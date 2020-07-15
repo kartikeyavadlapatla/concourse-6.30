@@ -1,0 +1,12 @@
+- type: replace
+  path: /releases/name=credhub
+  value:
+   name: credhub
+   url: file://((credhub_release))
+   version: latest
+- type: replace
+  path: /releases/name=uaa
+  value:
+   name: uaa
+   url: file://((uaa_release))
+   version: latest

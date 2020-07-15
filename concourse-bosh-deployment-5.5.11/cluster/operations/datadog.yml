@@ -1,0 +1,60 @@
+- type: replace
+  path: /releases/-
+  value:
+    name: datadog-agent
+    version: latest
+
+- type: replace
+  path: /addons?/-
+  value:
+    name: dd-agent
+    include:
+      stemcell:
+      - os: ubuntu-trusty
+      - os: ubuntu-xenial
+    jobs:
+    - name: dd-agent
+      release: datadog-agent
+      properties:
+        dd:
+          api_key: ((datadog_api_key))
+          tags: ((datadog_tags))
+
+          # collect live per-process stats
+          process_agent_enabled: true
+
+          # enable statsd sink for concourse to emit its own metrics to
+          use_dogstatsd: true
+
+          # this is the default, but let's be explicit for below
+          dogstatsd_port: 18125
+
+          # without this the hostnames are just 'db-0' which aren't unique across
+          # deployments, causing datadog to only collect one set of stats at a
+          # time (whoever starts up last)
+          unique_friendly_hostname: true
+
+          # by default, the agent will emit disk usage for every volume.
+          # this results in noisy, high-cardinality metrics that are also
+          # very expensive! these two config flags override the defaults,
+          # and disable per-volume reporting.
+          generate_disk_config: false
+          disk_yaml_config: |
+            ---
+            init_config:
+
+            instances:
+              - use_mount: yes
+                tag_by_filesystem: true
+                all_partitions: true
+                mount_point_blacklist:
+                - ^\/var\/vcap\/data\/worker\/work\/volumes\/.*
+                file_system_blacklist:
+                - tracefs
+
+- type: replace
+  path: /instance_groups/name=web/jobs/name=web/properties/datadog?
+  value:
+    agent_host: 127.0.0.1
+    agent_port: 18125
+    prefix: concourse.ci

@@ -1,0 +1,6 @@
+- type: replace
+  path: /instance_groups/name=web/jobs/name=web/properties/tls?/cert?
+  value: ((atc_tls))
+- type: replace
+  path: /instance_groups/name=db/jobs/name=postgres/properties/tls?/cert?
+  value: ((atc_tls))

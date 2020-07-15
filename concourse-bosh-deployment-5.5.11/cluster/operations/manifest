@@ -1,0 +1,206 @@
+instance_groups:
+- azs:
+  - us-east-1a
+  instances: 1
+  jobs:
+  - name: bpm
+    release: bpm
+  - name: web
+    properties:
+      add_local_users:
+      - admin1:pass1
+      bind_port: 80
+      external_url: https://10.0.1.15
+      main_team:
+        auth:
+          local:
+            users:
+            - admin1
+      postgresql:
+        database: atc
+        role:
+          name: concourse
+          password: postgress_pass1
+      tls:
+        bind_port: 443
+        cert: ((atc_tls))
+      token_signing_key:
+        private_key: |
+          -----BEGIN RSA PRIVATE KEY-----
+          MIIEpAIBAAKCAQEA8eIqROpGO+/k/kPdsPfVPN+dMfgRHk0zXDL5U3Ewuktvrt4X
+          jlkh9AvIaYni6PbAz9OipsCqM6m0dekMhxxG9AEXx6nQJnPod9gWnp/p7IN4Fndy
+          f47eMwy6Fy21wlSFkF3f2DWGESPI0lmEtH75jIyMlmtCnVDGR22QmMrXruzZBipp
+          a9k/RduLTJ+s2S8u4EchSWjq/2z4HNB3yvXgdicDc7t2mS1aZwgyJaGoBhsKYhmd
+          O+2u6e13r4VSMrZ7OPjpE0juriErjah3k3e0jK8ySsle6np88zpGBDwNxxlhZRGD
+          j7n0q2V5LVI84T0S6v1RYjZ0FO8PgUexNc7AgwIDAQABAoIBAF6ZREzFjwhb7yQe
+          KLLQin4POmxTh2ZhbQfPC8G9kAAcBqbOR0otw+CtRwk3mx3fe1MMgx1SVn50DZbb
+          uUGSJpHBZ6p32Gdhh3ZvdZE+G3+bfzjSKF6I4o/2l0T/ZImHAuGORUBK1o8Xfq/9
+          wK/SxQhZ45Xkhx39fD5tNFL9adMIHcYkq0y+EEYXDP4Af/yTXzC9k0WgO8rCaK8H
+          TpMGdoHVmIC5XXY4X7R36FNgAMYJA9gBSSzC1DjJzc8cCi7iDFEpOTdQwMtQ04B4
+          hfgTZWzKYptxUsIEHpYyUjH54eJeI0L7lPJOUL9oo/64CqZzFZIXxvsBSZy3sdiu
+          emotuQECgYEA+vxMedfm2ZzmM39RM/2Mh11cngfIMy/fOn3kL+0X/2y2RkbBX6xs
+          I1mj/eUG2rtZlmCL6hSfTMnefH/kyJN5aiyPT9KxDhcbYpn+8KIP5ufQBoHeXKQk
+          Kr5rt0TrNBy8wjs+WBFJBMg98TwgvKDpGS+q5iL+InZa5HgJxkyOBgMCgYEA9rdP
+          /kk2ttcUS2+5lR96yPMke35mL0lBGV2Fsux3+iS8fm2wm08EdFHXqAeCsxp0zqLY
+          zpwdXOKpoMGkTNOQGBPwHzmFqxL00T0iC/nU5WxhzxGe45k30nAWBGRTQjyBLmD1
+          rcb7DywVDKNMHXS8unyN8jSo/Hj2FXp7Qyruk4ECgYEAlNQzTTUXsQb3AqaGsnux
+          bzuPhi47Kw9CId8xBrJjPpVqaLXgSSlnXnbzZcT/kYjzENbjYMUlyVUTV2RHeCDr
+          KGiP+teHIkHVfVyv7mVLZLMlihZMk0bKI4aTPTPi/R3lWI/k4jgtwmYzRO9Qwknw
+          r3yyrJEnfawNLdl4glw3A50CgYAKSdi3JPx4IX4CK1WU52wqZyFVWQ8P18E0Opcx
+          v/S85L1LlG1x/JiV9TfGFRIZP/gxCc96xj3fOsCSKKEeZxAyQNqZor91Q+Qbua3q
+          y+9Z5ewqQ3TZzvDqAKyaYEiskXNdqMN2DL85gcAa99Bbxht8t2b/+7w0UyMIAESV
+          p3utgQKBgQC82kKmERM/oq/wcCpP4Xc6wXQ+h5R9Q0pU+BwOmd312c1SXuV4w8ar
+          uMgIy5jqqlXd2gWp8wE8dzHeBf5ttCfyQ15WkFoUKsEp5ywdvK+ptYi8Q00yuSQ2
+          4E0ygV7LfGHYKrzvuW/JNT4UPiCfmicipQ7pak29ODVXGK/cuRQ1zQ==
+          -----END RSA PRIVATE KEY-----
+        public_key: |
+          -----BEGIN PUBLIC KEY-----
+          MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA8eIqROpGO+/k/kPdsPfV
+          PN+dMfgRHk0zXDL5U3Ewuktvrt4Xjlkh9AvIaYni6PbAz9OipsCqM6m0dekMhxxG
+          9AEXx6nQJnPod9gWnp/p7IN4Fndyf47eMwy6Fy21wlSFkF3f2DWGESPI0lmEtH75
+          jIyMlmtCnVDGR22QmMrXruzZBippa9k/RduLTJ+s2S8u4EchSWjq/2z4HNB3yvXg
+          dicDc7t2mS1aZwgyJaGoBhsKYhmdO+2u6e13r4VSMrZ7OPjpE0juriErjah3k3e0
+          jK8ySsle6np88zpGBDwNxxlhZRGDj7n0q2V5LVI84T0S6v1RYjZ0FO8PgUexNc7A
+          gwIDAQAB
+          -----END PUBLIC KEY-----
+      worker_gateway:
+        authorized_keys: |+
+          ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC4fNF21pHTrroo643ZGhkYNLEb8Qp0ViMLcW8yc8Fn8UoImRPVqLsQexG5go6kXMozS19KxVDtZPw34VuzVm2Y4+rEHj9G4hzlzFQQ+3cQ5AWt2rkUZ+iPyb9cPGH+cCSHBx95HnEdJ1oG7MC+7n5XYygoxhoc8yPHw4uC5vjgEhzVvq4NkYY37tVj7OhBdkNZ7roCZmTRnzjYpbnFyjAzNLvVq8OT4k9T9wLfiBMrQL4WgCb+YjiCu/tCwtyhHzhriwXrCVEPS769TIAhmwZGnHZdeomJDyxh924DVH6HDnRORTucvk7f5YpyLSX9Pk6m8JGB+YasYumGJs8LXj7x
+
+        host_key:
+          private_key: |
+            -----BEGIN RSA PRIVATE KEY-----
+            MIIEowIBAAKCAQEAq1sbCpK7ltU0KsSvNACyrAcrR+I7i2cS5haQQvzxh8EOfOZF
+            /yO8QWY4tcbm0jmxCAmge9uKxUx0GeAyVYf27+VjKmVPo9oGTappOOJsm26b0ArE
+            2XRXlRlTXqTMbXEQrKlx/MYmlL12SPNPXrWIWMYugLD01ynnLCxeAtJPjle0m4Ti
+            CkV/UsdzlIdHO4WqfH4LFCdL8gUvmmoWKTogcdgzg++aTRchEvTs3y2fvSpsNFLB
+            4ddJBwQFJ105FbRo80K+muaRNwC/wo1zwt6oDdiVXmqbOzvij+Z5Gaj+wm/zuTFF
+            ms7QN26bKpKTsl6BZH/OFt1HptOZ12aGAExWSQIDAQABAoIBAHnhsIdBvUpY1eVB
+            xvjvMicoZkGYChBqvUeJbw0my0lrKTnvtIP40BOYeOfa1R1cya3U4yCWFMunSMGK
+            9WJe9mbGO1XRf+ck0ez2NCew7d1UvGEq979QgGdd/y3HfFyv2lNlpt1Lt+9+H59d
+            6OuNpbC3LiZ9N3m/pV2HJUtOeiXc03GL2yIcf++xW2jxqVW+//AWOjLEYApGBupQ
+            ctveXz6YHeOipaZxf2+AGtLAAhnm7ar2bGaZb3VYqt1BHCTWb54vJYxFh+WQuwP+
+            otFRh/h1mpQnUdtYKXoapRsuGLGW1md3RYkHErDGwIYVU7XTAlXsbvDcVY//Py2U
+            4wRBN80CgYEAwMr28g+ZJ6+4K5ejNof95f9BZM9PKbSDz6IibkQiwIFwTWg6p+X9
+            oYmIhyuneDZ+IkUGfbH41C891Y4tDEyjOQQa8VEvi9SLMf8qhzSfv8XLM3BAuni7
+            9qa1ks+BBRpKttinlKQIVXbhprgwpjq4ztBum2vDeyqHzdnsHm+kBycCgYEA44jx
+            /oK6nBi7EzAmoTczJAYkFUezzRS3qmz76Xy1HtWEG4ilBOSivonnW1Vj3rSSwRt3
+            yW3ElCns26VQb+JraNCW5ZpzCYT3V/j8/evDeklOhqfA/BEaiHKStQ/riIFvtkm8
+            Jl2r9g9r3BM7hk2dVpMhHSfHi7xGyvg43iBrnQ8CgYBd7sXw3G63qmLmQmSQPiQT
+            upFnB6a/YCdUs99osCPqfWZ1IJJrmaBA41y01y0qYgqEsfLerSbaYwYSlcoXEwP3
+            1Ks35mFvFKiZPITBCX/IFRvTPR8ce5TBMSqIlDd9f/jlK5xCzMUOtvRsoZN6emPu
+            yBkL+q5sxSUTw9jKX4SgwwKBgH80jY3rSiaAkP3OOpqAwL+QC1Y2SugJgBDwcvl6
+            9csyNXQrNY6BwBZkBIsENxxHuY/qKlLbYj4vHjNBvbF/VOs5SlM8wLl+s8Vj9xSC
+            XTudhiAz4ulJKptD6o79QoGDU5AGswCD9+JNhtB3lBymgaLoCGhDWATgEnfgw/Iz
+            D9azAoGBAIZ3toALJWOd7506VGaNyPEm9+TWCKGKnsbBvEp14Aqfi5iQgDSkJRFX
+            R5BcHjtjuGBJiIt6F1uhYN6FT0s+gEVdt+mMFnf2b1sIRf66Wo56fSg94r3SR+KA
+            DK/22YpBrGU35yRiJD+9gW8PQyT9ENBdNG39IMbuciNxu5/HI5tZ
+            -----END RSA PRIVATE KEY-----
+          public_key: |
+            ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCrWxsKkruW1TQqxK80ALKsBytH4juLZxLmFpBC/PGHwQ585kX/I7xBZji1xubSObEICaB724rFTHQZ4DJVh/bv5WMqZU+j2gZNqmk44mybbpvQCsTZdFeVGVNepMxtcRCsqXH8xiaUvXZI809etYhYxi6AsPTXKecsLF4C0k+OV7SbhOIKRX9Sx3OUh0c7hap8fgsUJ0vyBS+aahYpOiBx2DOD75pNFyES9OzfLZ+9Kmw0UsHh10kHBAUnXTkVtGjzQr6a5pE3AL/CjXPC3qgN2JVeaps7O+KP5nkZqP7Cb/O5MUWaztA3bpsqkpOyXoFkf84W3Uem05nXZoYATFZJ
+          public_key_fingerprint: 20:57:58:f6:ac:1a:a9:5c:75:06:63:91:82:40:aa:dd
+    release: concourse
+  name: web
+  networks:
+  - name: concourse
+    static_ips:
+    - 10.0.1.15
+  stemcell: xenial
+  vm_type: t3.medium
+- azs:
+  - us-east-1a
+  instances: 1
+  jobs:
+  - name: postgres
+    properties:
+      databases:
+        databases:
+        - name: atc
+        port: 5432
+        roles:
+        - name: concourse
+          password: postgress_pass1
+    release: postgres
+  - name: bbr-atcdb
+    release: concourse
+  - name: database-backup-restorer
+    release: backup-and-restore-sdk
+  name: db
+  networks:
+  - name: concourse
+  persistent_disk_type: 307200
+  stemcell: xenial
+  vm_type: t3.medium
+- azs:
+  - us-east-1a
+  instances: 2
+  jobs:
+  - name: worker
+    properties:
+      drain_timeout: 10m
+      worker_gateway:
+        worker_key:
+          private_key: |
+            -----BEGIN RSA PRIVATE KEY-----
+            MIIEowIBAAKCAQEAuHzRdtaR0666KOuN2RoZGDSxG/EKdFYjC3FvMnPBZ/FKCJkT
+            1ai7EHsRuYKOpFzKM0tfSsVQ7WT8N+Fbs1ZtmOPqxB4/RuIc5cxUEPt3EOQFrdq5
+            FGfoj8m/XDxh/nAkhwcfeR5xHSdaBuzAvu5+V2MoKMYaHPMjx8OLgub44BIc1b6u
+            DZGGN+7VY+zoQXZDWe66AmZk0Z842KW5xcowMzS71avDk+JPU/cC34gTK0C+FoAm
+            /mI4grv7QsLcoR84a4sF6wlRD0u+vUyAIZsGRpx2XXqJiQ8sYfduA1R+hw50TkU7
+            nL5O3+WKci0l/T5OpvCRgfmGrGLphibPC14+8QIDAQABAoIBAFDi+Pu/rARBsYFL
+            dc/gL2x7fcOgdVL4iTj1LSnTstKd6jXG1/lvl0TskKLjaSMLQ+QlgcxIoujSw/rE
+            Je6FUFweYcpG8LtlXAItChbACj4vm4XURh16SW7xp6MLHnPuOzWwm84A2NtNa51p
+            pECSVHaAFRV7deuHdwKY68wi9K9YwpcexbI9e5XFhNzS+CwgkKWCUC8vOVXxnFnQ
+            Tww3jsiMHH3Gc4gJjzyTGW2KWWbHBRLDSEOox/wvYAjYaWmZu/sLFAtMYwWf9NIT
+            7U2BGeeHC5gUWPY4LM/8nQFuC8CUDYvw4uK9Mom2vlrXIsJg5VV18RyLoyTxXB21
+            hZfh0hkCgYEAyi6+8YwTMNbwZEXv7ZQZo8NmXiszJxKywrM7qaqfVD32PjgkP6ic
+            BxcHtaC02pdII8HYanv8hL5kPIdJwbVnp+exgZAjyeyqMcxxxNTuy+j7fgooVK2W
+            FDdpDX/yFRbfeR5fs7havBIrLGEv7fPQXhFZP0cf5iiR5+OtYaQHCpMCgYEA6ZhJ
+            VneqOOlQdI2WcSlED/y2vkr9o19s4KvCwZxGk3iPLpKv7yEYR+8VDzH/Zxw1XZtW
+            pwwgNnnHDlN6y65pKpXtFwjWiiDyiDyF/ekZSH2EATmJwXDs5/u3VUmADS+KEZ7r
+            py9Z4vYhEsTEAcQC3sxWGZkWCO1DMkmrai8OjusCgYBVpWu5gu72N3bp4z5508zw
+            tGt+5KnsmV0kYSya+O45j23qeXnRhaliz3yykftKxd8HVqxIn3EfAlAP2/eAmUnp
+            tJpbGiYu+ZQ3ODXRfaoSswUmJUNka4wx0C8uSs7P5DqSYi2EQkoddUzYperZz/iq
+            gIrf5U87/l+gbbAatpNNBQKBgQDShPs7IRdYuPRYRi4aB92eJtuuvbi+Xsap6EHZ
+            6PQ1/YXUrEBAW2wdkBtDmYSasXJqzQ8X9zakwbUidRuKqsF+rqWAh+eJjs3k996u
+            CUBO80dfLzK2EgZ/v3vnMhlkSL6+yKGKB4OTpswBtTEMglEv56mE4lFYdDOGA5yn
+            UodlRwKBgC+zAJsh7RhuaBrD1mtOMKHD5dnnlD8IKWQ6M7fdNqGqxtCLMED54Uvf
+            PRhjGrNJ4QOOfTXetO6cWh0TeyovHEz7t/sP93/MjUafqJfRvYHIui3FTnOGopdF
+            4pYskqBKi00gcUQQjiMEHSTQFC9Awa6tdCbzk6/KbCKtBgp0DH9r
+            -----END RSA PRIVATE KEY-----
+          public_key: |
+            ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC4fNF21pHTrroo643ZGhkYNLEb8Qp0ViMLcW8yc8Fn8UoImRPVqLsQexG5go6kXMozS19KxVDtZPw34VuzVm2Y4+rEHj9G4hzlzFQQ+3cQ5AWt2rkUZ+iPyb9cPGH+cCSHBx95HnEdJ1oG7MC+7n5XYygoxhoc8yPHw4uC5vjgEhzVvq4NkYY37tVj7OhBdkNZ7roCZmTRnzjYpbnFyjAzNLvVq8OT4k9T9wLfiBMrQL4WgCb+YjiCu/tCwtyhHzhriwXrCVEPS769TIAhmwZGnHZdeomJDyxh924DVH6HDnRORTucvk7f5YpyLSX9Pk6m8JGB+YasYumGJs8LXj7x
+          public_key_fingerprint: 02:a5:20:04:33:9c:b2:4d:32:b4:95:4c:74:7c:65:06
+    release: concourse
+  name: worker
+  networks:
+  - name: concourse
+  stemcell: xenial
+  vm_type: t3.medium
+name: concourse-np
+releases:
+- name: concourse
+  sha1: 876a8aef1c790c6e8578a3b7c11c2265072f0565
+  url: https://bosh.io/d/github.com/concourse/concourse-bosh-release?v=5.5.11
+  version: 5.5.11
+- name: bpm
+  sha1: c956394fce7e74f741e4ae8c256b480904ad5942
+  url: https://bosh.io/d/github.com/cloudfoundry/bpm-release?v=1.1.8
+  version: 1.1.8
+- name: postgres
+  sha1: 4488d08ff54117a9d904f6e2f27c82c1cf4c910e
+  url: https://bosh.io/d/github.com/cloudfoundry/postgres-release?v=41
+  version: "41"
+- name: backup-and-restore-sdk
+  version: 1.15.0
+stemcells:
+- alias: xenial
+  os: ubuntu-xenial
+  version: latest
+update:
+  canaries: 1
+  canary_watch_time: 1000-60000
+  max_in_flight: 3
+  serial: false
+  update_watch_time: 1000-60000
+variables: []
