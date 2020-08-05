@@ -205,6 +205,7 @@ vm_types:
       size: 65536
       type: gp2
     instance_type: m5.xlarge
+    iam_instance_profile: PCF_Role-EC2
     raw_instance_storage: false
   name: m5.xlarge
 - cloud_properties:
