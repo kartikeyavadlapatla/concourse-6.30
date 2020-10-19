@@ -1,5 +1,7 @@
 #!/bin/bash
 #set -eux
+###00 05 * * * cd /home/ubuntu/control-plane-backups && ./control_plane_backup.sh >> /home/ubuntu/control-plane-backups/control_plane_backup.log 2>&1
+
 timestamp=$(/bin/date +%Y%m%d_%H%M)
 backup_dir=control_plane_backups/${timestamp}
 log_dir=logs
