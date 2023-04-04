@@ -47,4 +47,4 @@ concourse-bosh-deployment-5.5.11/cluster/concourse.yml \
 -o concourse-bosh-deployment-5.5.11/cluster/operations/debug-concourse.yml \
 -o concourse-bosh-deployment-5.5.11/cluster/operations/privileged-https.yml \
 -o concourse-bosh-deployment-5.5.11/cluster/operations/secure-internal-postgres-uaa.yml \
--o concourse-bosh-deployment-5.5.11/cluster/operations/privileged-http.yml | Dont use this setting BCBS Security issue
+-o concourse-bosh-deployment-5.5.11/cluster/operations/privileged-http.yml | Dont use this setting Security issue
